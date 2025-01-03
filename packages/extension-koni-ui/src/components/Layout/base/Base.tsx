@@ -9,7 +9,13 @@ import { ThemeProps } from '@subwallet/extension-koni-ui/types';
 import { SwScreenLayout } from '@subwallet/react-ui';
 import { SwTabBarItem } from '@subwallet/react-ui/es/sw-tab-bar';
 import CN from 'classnames';
-import { Aperture, Clock, Database, Rocket, Wallet } from 'phosphor-react';
+import {
+  // Aperture,
+  Clock,
+  // Database,
+  // Rocket,
+  Wallet
+} from 'phosphor-react';
 import React, { useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -19,8 +25,8 @@ import Footer from '../parts/Footer';
 import SelectAccount from '../parts/SelectAccount';
 
 export interface LayoutBaseProps extends Omit<
-SwScreenLayoutProps,
-'tabBarItems' | 'footer' | 'headerContent' | 'selectedTabBarItem'
+  SwScreenLayoutProps,
+  'tabBarItems' | 'footer' | 'headerContent' | 'selectedTabBarItem'
 >, ThemeProps {
   children: React.ReactNode | React.ReactNode[];
   showFooter?: boolean;
