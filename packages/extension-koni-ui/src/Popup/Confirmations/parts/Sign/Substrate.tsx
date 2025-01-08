@@ -75,12 +75,24 @@ const Component: React.FC<Props> = (props: Props) => {
   }, [signMode]);
 
   const genesisHash = useMemo(() => {
+    console.log('payload:', payload);
+    console.log('chainInfoMap.polkadot:', chainInfoMap?.polkadot);
+
     if (isSubstrateMessage(payload)) {
-      return chainInfoMap.polkadot.substrateInfo?.genesisHash || '';
-    } else {
+      console.log('Debugging useMemo - substrateInfo.genesisHash:', chainInfoMap?.polkadot?.substrateInfo?.genesisHash);
+
+      return chainInfoMap?.polkadot?.substrateInfo?.genesisHash || '';
+    } else if (payload && 'genesisHash' in payload && typeof payload.genesisHash.toHex === 'function') {
+      console.log('Debugging useMemo - payload is ExtrinsicPayload.');
+      console.log('Debugging useMemo - payload.genesisHash.toHex():', payload.genesisHash.toHex());
+
       return payload.genesisHash.toHex();
+    } else {
+      console.log('Debugging useMemo - Fallback condition met. Returning empty string.');
+
+      return '';
     }
-  }, [chainInfoMap.polkadot.substrateInfo?.genesisHash, payload]);
+  }, [chainInfoMap, payload]);
 
   const chain = useGetChainInfoByGenesisHash(genesisHash);
 

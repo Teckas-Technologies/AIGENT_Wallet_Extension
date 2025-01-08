@@ -14,7 +14,7 @@ const DEFAULT_SERVICE_INFO: Record<SupportService, BuyService> = {
 };
 
 export const MAP_PREDEFINED_BUY_TOKEN: Record<string, BuyTokenInfo> = {
-  'aigentDevelopment-NATIVE-AIGENT': {
+  'aigent-NATIVE-AIGENT': {
     serviceInfo: {
       ...DEFAULT_SERVICE_INFO,
       banxa: {
@@ -27,7 +27,7 @@ export const MAP_PREDEFINED_BUY_TOKEN: Record<string, BuyTokenInfo> = {
       }
     },
     network: 'aigent',
-    slug: 'aigentDevelopment-NATIVE-AIGENT',
+    slug: 'aigent-NATIVE-AIGENT',
     symbol: 'AIGENT',
     support: 'SUBSTRATE',
     services: [

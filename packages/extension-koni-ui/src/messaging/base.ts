@@ -16,6 +16,9 @@ interface Handler {
 
 type Handlers = Record<string, Handler>;
 const port = chrome.runtime.connect({ name: PORT_EXTENSION });
+
+console.log('port', port);
+
 const handlers: Handlers = {};
 
 export function sendMessage<TMessageType extends MessageTypesWithNullRequest> (message: TMessageType): Promise<ResponseTypes[TMessageType]>;
@@ -106,7 +109,11 @@ export function subscribeMessage<TMessageType extends MessageTypesWithSubscripti
 
 // setup a listener for messages, any incoming resolves the promise
 port.onMessage.addListener((data: Message['data']): void => {
+  console.log('Received message --------------------------------', data);
   const handler = handlers[data.id];
+
+  console.log('Handler for ID:', data.id);
+  console.log('Handling >>>>>>>>>:', handler);
 
   if (!handler) {
     console.error(`Unknown response: ${JSON.stringify(data)}`);
@@ -121,7 +128,9 @@ port.onMessage.addListener((data: Message['data']): void => {
   if (data.subscription) {
     // eslint-disable-next-line @typescript-eslint/ban-types
     (handler.subscriber as Function)(data.subscription);
+    console.log('Handling subscription:', data.subscription);
   } else if (data.error) {
+    console.error('Error in data:', data.error);
     handler.reject(new Error(data.error));
   } else {
     handler.resolve(data.response);

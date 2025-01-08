@@ -46,7 +46,13 @@ const Component: React.FC<Props> = (props: Props) => {
     <div className={CN(className)}>
       <div className='expand-view-header'>
         <div className='logo-container'>
-          <Logo2D />
+          <img
+            src='./images/subwallet/gradient-logo.png'
+            style={{
+              width: '40px',
+              height: '40px'
+            }}
+          />
         </div>
         <div className='help-container'>
           <Button

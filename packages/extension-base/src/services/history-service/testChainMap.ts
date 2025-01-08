@@ -38,12 +38,12 @@ export const TEST_CHAIN_LIST = [
   currentProvider: 'Parity'
 },
 {
-  slug: 'aigentDevelopment',
+  slug: 'aigent',
   name: 'AIGENT',
   isTestnet: false,
   chainStatus: 'ACTIVE',
   providers: {
-    AigentDevelopment: "wss://backend.ai-gents.io"
+    aigent: "wss://backend.ai-gents.io"
   },
   substrateInfo: {
     paraId: 0,
@@ -62,7 +62,7 @@ export const TEST_CHAIN_LIST = [
   },
   evmInfo: null,
   active: true,
-  currentProvider: 'AigentDevelopment'
+  currentProvider: 'aigent'
 }
 ] as unknown as _ChainInfo[];
 

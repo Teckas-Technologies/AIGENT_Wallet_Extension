@@ -130,30 +130,140 @@ function getTokenItems (
   return items;
 }
 
-function getTokenAvailableDestinations (tokenSlug: string, xcmRefMap: Record<string, _AssetRef>, chainInfoMap: Record<string, _ChainInfo>): ChainItemType[] {
+// function getTokenAvailableDestinations (
+//   tokenSlug: string,
+//   xcmRefMap: Record<string, _AssetRef>,
+//   chainInfoMap: Record<string, _ChainInfo>
+// ): ChainItemType[] {
+//   if (!tokenSlug) {
+//     console.warn('Token slug is empty or undefined.');
+
+//     return [];
+//   }
+
+//   const result: ChainItemType[] = [];
+
+//   // Get the origin chain
+//   const originChainKey = _getOriginChainOfAsset(tokenSlug);
+
+//   console.log('Origin Chain Key:', originChainKey);
+
+//   const originChain = chainInfoMap[originChainKey];
+
+//   console.log('Origin Chain Data:', originChain);
+
+//   // Safely add the origin chain to the result
+//   if (originChain) {
+//     result.push({
+//       name: originChain.name,
+//       slug: originChain.slug
+//     });
+//     console.log('Added Origin Chain:', {
+//       name: originChain.name,
+//       slug: originChain.slug
+//     });
+//   } else {
+//     console.warn(`Origin chain not found for key: ${originChainKey}`);
+//   }
+
+//   // Process XCM references
+//   console.log('Processing XCM References:', xcmRefMap);
+
+//   Object.values(xcmRefMap).forEach((xcmRef) => {
+//     console.log('Current XCM Reference:', xcmRef);
+
+//     if (xcmRef.srcAsset === tokenSlug) {
+//       console.log('Matched Token Slug in XCM Reference:', xcmRef);
+
+//       const destinationChain = chainInfoMap[xcmRef.destChain];
+
+//       console.log('Destination Chain Data:', destinationChain);
+
+//       if (destinationChain) {
+//         result.push({
+//           name: destinationChain.name,
+//           slug: destinationChain.slug
+//         });
+//         console.log('Added Destination Chain:', {
+//           name: destinationChain.name,
+//           slug: destinationChain.slug
+//         });
+//       } else {
+//         console.warn(`Destination chain not found for key: ${xcmRef.destChain}`);
+//       }
+//     }
+//   });
+
+//   console.log('Final Result:', result);
+
+//   return result;
+// }
+
+function getTokenAvailableDestinations (
+  tokenSlug: string,
+  xcmRefMap: Record<string, _AssetRef>,
+  chainInfoMap: Record<string, _ChainInfo>
+): ChainItemType[] {
   if (!tokenSlug) {
+    console.warn('Token slug is empty or undefined.');
+
     return [];
   }
 
   const result: ChainItemType[] = [];
-  const originChain = chainInfoMap[_getOriginChainOfAsset(tokenSlug)];
 
-  // Firstly, push the originChain of token
-  result.push({
-    name: originChain.name,
-    slug: originChain.slug
-  });
+  // Get the origin chain
+  const originChainKey = _getOriginChainOfAsset(tokenSlug);
+
+  console.log('Origin Chain Key:', originChainKey);
+
+  const originChain = chainInfoMap[originChainKey];
+
+  console.log('Origin Chain Data >>>>>>>>>>>>>', originChain);
+
+  if (originChain) {
+    result.push({
+      name: originChain.name,
+      slug: originChain.slug
+    });
+    console.log('Added Origin Chain:', {
+      name: originChain.name,
+      slug: originChain.slug
+    });
+  } else {
+    console.warn(`Origin chain not found for key: ${originChainKey}`);
+  }
+
+  // Process XCM references
+  console.log('Processing XCM References:', xcmRefMap);
 
   Object.values(xcmRefMap).forEach((xcmRef) => {
+    console.log('Current XCM Reference:', xcmRef);
+
     if (xcmRef.srcAsset === tokenSlug) {
+      console.log('Matched Token Slug in XCM Reference:', xcmRef);
+
       const destinationChain = chainInfoMap[xcmRef.destChain];
 
-      result.push({
-        name: destinationChain.name,
-        slug: destinationChain.slug
-      });
+      console.log('Destination Chain Data:', destinationChain);
+
+      if (destinationChain) {
+        result.push({
+          name: destinationChain.name,
+          slug: destinationChain.slug
+        });
+        console.log('Added Destination Chain:', {
+          name: destinationChain.name,
+          slug: destinationChain.slug
+        });
+      } else {
+        console.warn(`Destination chain not found for key: ${xcmRef.destChain}`);
+        console.log('Keys in chainInfoMap:', Object.keys(chainInfoMap)); // Log all available keys
+      }
     }
   });
+
+  console.log('Final Result:', result);
 
   return result;
 }
@@ -270,15 +380,27 @@ const _SendFund = ({ className = '' }: Props): React.ReactElement<Props> => {
   }, [currentChainAsset]);
 
   const extrinsicType = useMemo((): ExtrinsicType => {
+    console.log('Debugging useMemo - chain:', chain);
+    console.log('Debugging useMemo - destChain:', destChain);
+    console.log('Debugging useMemo - currentChainAsset:', currentChainAsset);
+
     if (!currentChainAsset) {
+      console.log('Debugging useMemo - No currentChainAsset. Returning ExtrinsicType.UNKNOWN.');
+
       return ExtrinsicType.UNKNOWN;
     } else {
       if (chain !== destChain) {
+        console.log('Debugging useMemo - chain !== destChain. Returning ExtrinsicType.TRANSFER_XCM.');
+
         return ExtrinsicType.TRANSFER_XCM;
       } else {
         if (currentChainAsset.assetType === _AssetType.NATIVE) {
+          console.log('Debugging useMemo - currentChainAsset.assetType is NATIVE. Returning ExtrinsicType.TRANSFER_BALANCE.');
+
           return ExtrinsicType.TRANSFER_BALANCE;
         } else {
+          console.log('Debugging useMemo - currentChainAsset.assetType is not NATIVE. Returning ExtrinsicType.TRANSFER_TOKEN.');
+
           return ExtrinsicType.TRANSFER_TOKEN;
         }
       }
@@ -429,11 +551,13 @@ const _SendFund = ({ className = '' }: Props): React.ReactElement<Props> => {
 
   // Submit transaction
   const onSubmit: FormCallbacks<TransferParams>['onFinish'] = useCallback((values: TransferParams) => {
+    console.log('Form submitted with values:', values);
     setLoading(true);
     const { asset, chain, destChain, from, to, value } = values;
 
     let sendPromise: Promise<SWTransactionResponse>;
 
+    console.log('Fetching account for address:', from);
     const account = findAccountByAddress(accounts, from);
 
     if (!account) {
@@ -450,6 +574,10 @@ const _SendFund = ({ className = '' }: Props): React.ReactElement<Props> => {
     const isEthereum = isEthereumAddress(account.address);
     const chainAsset = assetRegistry[asset];
 
+    console.log('Account details:', account);
+    console.log('isLedger:', isLedger, 'isEthereum:', isEthereum);
+    console.log('Chain asset details:', chainAsset);
+    
     if (chain === destChain) {
       if (isLedger) {
         if (isEthereum) {

@@ -18,8 +18,14 @@ function isRefCount (accountInfo: AccountInfoWithProviders | AccountInfoWithRefC
 }
 
 export async function checkReferenceCount (networkKey: string, address: string, substrateApiMap: Record<string, _SubstrateApi>, chainInfo: _ChainInfo): Promise<boolean> {
+  console.log('Starting checkReferenceCount');
+  console.log('Parameters:', { networkKey, address });
   const apiProps = await substrateApiMap[networkKey].isReady;
   const api = apiProps.api;
+
+  console.log('API fetched:', api);
+  console.log(Object.keys(api.tx));
+  console.log(api.tx.balances ? 'Balances module available' : 'Balances module not available');
 
   if (_isChainEvmCompatible(chainInfo)) {
     return false;
@@ -204,9 +210,12 @@ export const createTransferExtrinsic = async ({ from, networkKey, substrateApi, 
     transfer = api.tx.assets.transfer(_getTokenOnChainAssetId(tokenInfo), to, value);
   } else if (isTxBalancesSupported && _isNativeToken(tokenInfo)) {
     if (transferAll) {
+      // alert('Available modules: ' + Object.keys(api.tx).join(', '));
+      // alert('Balances methods: ' + (api.tx.balances ? Object.keys(api.tx.balances).join(', ') : 'Balances not available'));
       transfer = api.tx.balances.transferAll(to, false);
     } else if (value) {
-      transfer = api.tx.balances.transfer(to, new BN(value));
+      // transfer = api.tx.balances.transfer(to, new BN(value));
+      transfer = api.tx.balances.transferKeepAlive(to, new BN(value));
     }
   }
 
