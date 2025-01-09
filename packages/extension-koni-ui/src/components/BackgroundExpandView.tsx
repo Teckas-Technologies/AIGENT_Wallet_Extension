@@ -54,7 +54,7 @@ const Component: React.FC<Props> = (props: Props) => {
             }}
           />
         </div>
-        <div className='help-container'>
+        {/* <div className='help-container'>
           <Button
             icon={<Icon phosphorIcon={Question} />}
             onClick={openInNewTab('https://docs.subwallet.app/')}
@@ -63,7 +63,7 @@ const Component: React.FC<Props> = (props: Props) => {
           >
             {t('Help')}
           </Button>
-        </div>
+        </div> */}
         {
           isShowNotification && (
             <div className='message-container'>

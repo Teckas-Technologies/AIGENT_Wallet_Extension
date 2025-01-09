@@ -79,7 +79,8 @@ const Component: React.FC<Props> = ({ className }: Props) => {
       backgroundColor: token['orange-7'],
       icon: FileJs,
       key: 'restore-json',
-      label: t('Import from Polkadot.{js}'),
+      // label: t('Import from Polkadot.{js}'),
+      label: t('Import from AIGENT'),
       onClick: onClickJson
     },
     {

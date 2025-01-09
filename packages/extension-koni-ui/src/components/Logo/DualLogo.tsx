@@ -32,7 +32,13 @@ const Component = ({ className, leftLogo = defaultLogo, linkIcon = defaultLinkIc
   return (
     <div className={CN(className, 'dual-logo-container')}>
       <LogoWithSquircleBorder>
-        {leftLogo}
+      <img
+      src='./images/subwallet/gradient-logo.png'
+      style={{
+        width: '56px',
+        height: '56px'
+      }}
+    />
       </LogoWithSquircleBorder>
       <div className='link-icon'>
         {linkIcon}

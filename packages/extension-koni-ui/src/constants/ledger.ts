@@ -16,17 +16,17 @@ export const PredefinedLedgerNetwork: LedgerNetwork[] = [
     isDevMode: false,
     isEthereum: false
   },
-  {
-    accountName: 'Kusama',
-    appName: 'Kusama',
-    networkName: 'Kusama network',
-    genesisHash: ChainInfoMap.kusama.substrateInfo?.genesisHash || '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe',
-    icon: 'substrate',
-    network: 'kusama',
-    slug: ChainInfoMap.kusama.slug,
-    isDevMode: false,
-    isEthereum: false
-  },
+  // {
+  //   accountName: 'Kusama',
+  //   appName: 'Kusama',
+  //   networkName: 'Kusama network',
+  //   genesisHash: ChainInfoMap.kusama.substrateInfo?.genesisHash || '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe',
+  //   icon: 'substrate',
+  //   network: 'kusama',
+  //   slug: ChainInfoMap.kusama.slug,
+  //   isDevMode: false,
+  //   isEthereum: false
+  // },
   {
     accountName: 'Acala',
     appName: 'Acala',

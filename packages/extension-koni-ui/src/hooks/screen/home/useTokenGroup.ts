@@ -33,7 +33,7 @@ function sortTokenGroupMap (tokenGroupMap: TokenGroupHookType['tokenGroupMap']) 
   });
 }
 
-const prioritizedTokenGroups = ['DOT-Polkadot', 'KSM-Kusama'];
+const prioritizedTokenGroups = ['DOT-Polkadot', 'KSM-Kusama', 'aigent-NATIVE-AIGENT'];
 
 function sortTokenGroups (tokenGroups: string[]) {
   tokenGroups.sort((a, b) => {

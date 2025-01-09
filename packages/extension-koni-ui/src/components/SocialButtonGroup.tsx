@@ -30,11 +30,11 @@ const items: SocialItem[] = [
     type: SocialType.TWITTER,
     url: TWITTER_URL
   },
-  {
-    icon: DiscordLogo,
-    type: SocialType.DISCORD,
-    url: DISCORD_URL
-  },
+  // {
+  //   icon: DiscordLogo,
+  //   type: SocialType.DISCORD,
+  //   url: DISCORD_URL
+  // },
   {
     icon: PaperPlaneTilt,
     type: SocialType.TELEGRAM,

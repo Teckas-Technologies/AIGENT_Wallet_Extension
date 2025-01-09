@@ -33,7 +33,8 @@ function Component (props: Props): React.ReactElement<Props> {
       )}
       middleItem={(
         <>
-          <div className={'__website-name h5-text'}>{siteName}</div>
+          {/* <div className={'__website-name h5-text'}>{siteName}</div> */}
+          <div className={'__website-name h5-text'}>AIGENT</div>
           <div className={'__website-domain common-text'}>{domain}</div>
           <div className={'__account-count h5-text'}>{accountCount}</div>
         </>

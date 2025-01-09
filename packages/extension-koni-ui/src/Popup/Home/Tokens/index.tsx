@@ -173,7 +173,12 @@ const Component = (): React.ReactElement => {
       }
     });
 
-    return result.sort(sortTokenByValue);
+    const sortedResult = result.sort(sortTokenByValue);
+
+    console.log('Token Group Balance Items:', sortedResult);
+    console.log('Token Group Balance Map:', tokenGroupBalanceMap); // Log the items here
+
+    return sortedResult;
   }, [sortedTokenGroups, tokenGroupBalanceMap]);
 
   useEffect(() => {

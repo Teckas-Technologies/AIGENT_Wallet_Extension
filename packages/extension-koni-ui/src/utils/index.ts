@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import { ChainLogoMap } from '@subwallet/chain-list';
+// import { ChainLogoMap } from '@subwallet/extension-base/services/chain-service/custom-tokens/ChainLogoMap';
 import { _ChainInfo } from '@subwallet/chain-list/types';
 import { NetworkJson } from '@subwallet/extension-base/background/KoniTypes';
 import { AccountJson, AccountWithChildren } from '@subwallet/extension-base/background/types';

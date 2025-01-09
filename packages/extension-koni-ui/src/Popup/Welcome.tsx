@@ -76,6 +76,9 @@ function Component ({ className }: Props): React.ReactElement<Props> {
             width={139}
           />
         </div>
+        <div className='wallet-title'>
+          {t('AIGENT Wallet')}
+        </div>
         <div className='sub-title'>
           {t('Choose how you\'d like to set up your wallet')}
         </div>
@@ -154,6 +157,11 @@ const Welcome = styled(Component)<Props>(({ theme: { token } }: Props) => {
         lineHeight: token.lineHeightHeading5,
         color: token.colorTextLight3,
         flex: 1
+      },
+      '.wallet-title': {
+        fontSize: '30px',
+        color: 'white',
+        fontWeight: '700'
       }
     },
 

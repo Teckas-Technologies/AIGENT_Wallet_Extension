@@ -45,6 +45,8 @@ function Component ({ className = '' }: Props): React.ReactElement<Props> {
       handleMantaPaySync(mantaPayConfig.address);
     }
   }, [handleMantaPaySync, isZkModeSyncing, mantaPayConfig]);
+  console.log('Token Group Map:', tokenGroupStructure.tokenGroupMap);
+  console.log('Token Balance Map:', accountBalance.tokenBalanceMap);
 
   return (
     <>

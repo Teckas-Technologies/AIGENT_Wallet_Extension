@@ -1,13 +1,19 @@
 // Copyright 2019-2022 @subwallet/extension-base
 // SPDX-License-Identifier: Apache-2.0
 
-import { _DEFAULT_CHAINS } from '@subwallet/chain-list';
+import { DEFAULT_CHAINS } from './custom-tokens/defaultChains';
 import { _SubstrateChainType } from '@subwallet/chain-list/types';
 import { SingleModeJson, ThemeNames } from '@subwallet/extension-base/background/KoniTypes';
 
 export const API_AUTO_CONNECT_MS = 3000;
 export const API_CONNECT_TIMEOUT = 30000;
 export const API_MAX_RETRY = 2;
+
+if (typeof window !== 'undefined') {
+  // alert(`Default Chains: ${DEFAULT_CHAINS.join(', ')}`);
+} else {
+  console.log(`Default Chains: ${DEFAULT_CHAINS.join(', ')}`);
+}
 
 export const _API_OPTIONS_CHAIN_GROUP = {
   acala: ['acala', 'karura', 'origintrail', 'kintsugi'],
@@ -221,7 +227,7 @@ export const _XCM_TYPE = {
 };
 
 export const _DEFAULT_ACTIVE_CHAINS = [
-  ..._DEFAULT_CHAINS,
+  ...DEFAULT_CHAINS,
   'vara_network'
 ];
 

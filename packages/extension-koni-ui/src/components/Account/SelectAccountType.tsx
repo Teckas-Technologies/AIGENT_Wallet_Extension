@@ -26,7 +26,7 @@ interface AccountTypeItem {
   onClick: () => void;
 }
 
-const defaultLabel = 'Select account type';
+const defaultLabel = 'Import your account';
 
 const Component: React.FC<SelectAccountTypeProps> = (props: SelectAccountTypeProps) => {
   const { className, label, selectedItems, setSelectedItems, withLabel = false } = props;
@@ -67,12 +67,12 @@ const Component: React.FC<SelectAccountTypeProps> = (props: SelectAccountTypePro
 
   return (
     <div className={className}>
-      {withLabel && (
+      {/* {withLabel && (
         <div className='label'>
           {t(label || defaultLabel)}
         </div>
-      )}
-      <div className='items-container'>
+      )} */}
+      {/* <div className='items-container'>
         {items.map((item) => {
           const _selected = selectedItems.find((i) => i === item.key);
 
@@ -104,7 +104,7 @@ const Component: React.FC<SelectAccountTypeProps> = (props: SelectAccountTypePro
             </div>
           );
         })}
-      </div>
+      </div> */}
     </div>
   );
 };

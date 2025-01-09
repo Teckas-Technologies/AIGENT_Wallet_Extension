@@ -198,14 +198,14 @@ function Component ({ className = '' }: Props): React.ReactElement<Props> {
           title: t('Twitter'),
           onClick: openInNewTab(TWITTER_URL)
         },
-        {
-          key: 'discord',
-          leftIcon: DiscordLogo,
-          leftIconBgColor: token['geekblue-8'],
-          rightIcon: ArrowSquareOut,
-          title: t('Discord'),
-          onClick: openInNewTab(DISCORD_URL)
-        },
+        // {
+        //   key: 'discord',
+        //   leftIcon: DiscordLogo,
+        //   leftIconBgColor: token['geekblue-8'],
+        //   rightIcon: ArrowSquareOut,
+        //   title: t('Discord'),
+        //   onClick: openInNewTab(DISCORD_URL)
+        // },
         {
           key: 'telegram',
           leftIcon: TelegramLogo,
@@ -216,44 +216,44 @@ function Component ({ className = '' }: Props): React.ReactElement<Props> {
         }
       ]
     },
-    {
-      key: 'about',
-      label: t('About AIGENT Wallet'),
-      items: [
-        {
-          key: 'website',
-          leftIcon: ShieldCheck,
-          leftIconBgColor: token['red-6'],
-          rightIcon: ArrowSquareOut,
-          title: t('Website'),
-          onClick: openInNewTab(WEBSITE_URL)
-        },
-        {
-          key: 'user-manual',
-          leftIcon: Book,
-          leftIconBgColor: token['green-6'],
-          rightIcon: ArrowSquareOut,
-          title: t('User guide'),
-          onClick: openInNewTab(WIKI_URL)
-        },
-        {
-          key: 'term-of-service',
-          leftIcon: BookOpen,
-          leftIconBgColor: token['volcano-7'],
-          rightIcon: ArrowSquareOut,
-          title: t('Terms of service'),
-          onClick: openInNewTab(TERMS_OF_SERVICE_URL)
-        },
-        {
-          key: 'privacy-policy',
-          leftIcon: BookBookmark,
-          leftIconBgColor: token['geekblue-6'],
-          rightIcon: ArrowSquareOut,
-          title: t('Privacy policy'),
-          onClick: openInNewTab(PRIVACY_AND_POLICY_URL)
-        }
-      ]
-    }
+    // {
+    //   key: 'about',
+    //   label: t('About AIGENT Wallet'),
+    //   items: [
+    //     {
+    //       key: 'website',
+    //       leftIcon: ShieldCheck,
+    //       leftIconBgColor: token['red-6'],
+    //       rightIcon: ArrowSquareOut,
+    //       title: t('Website'),
+    //       onClick: openInNewTab(WEBSITE_URL)
+    //     },
+    //     {
+    //       key: 'user-manual',
+    //       leftIcon: Book,
+    //       leftIconBgColor: token['green-6'],
+    //       rightIcon: ArrowSquareOut,
+    //       title: t('User guide'),
+    //       onClick: openInNewTab(WIKI_URL)
+    //     },
+    //     {
+    //       key: 'term-of-service',
+    //       leftIcon: BookOpen,
+    //       leftIconBgColor: token['volcano-7'],
+    //       rightIcon: ArrowSquareOut,
+    //       title: t('Terms of service'),
+    //       onClick: openInNewTab(TERMS_OF_SERVICE_URL)
+    //     },
+    //     {
+    //       key: 'privacy-policy',
+    //       leftIcon: BookBookmark,
+    //       leftIconBgColor: token['geekblue-6'],
+    //       rightIcon: ArrowSquareOut,
+    //       title: t('Privacy policy'),
+    //       onClick: openInNewTab(PRIVACY_AND_POLICY_URL)
+    //     }
+    //   ]
+    // }
   ]), [isPopup, navigate, t, token]);
 
   const headerIcons = useMemo<ButtonProps[]>(() => {

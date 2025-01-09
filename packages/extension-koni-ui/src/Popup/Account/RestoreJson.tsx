@@ -282,11 +282,12 @@ const Component: React.FC<Props> = ({ className }: Props) => {
             onClick: goHome
           }
         ]}
-        title={t<string>('Import from Polkadot.{js}')}
+        // title={t<string>('Import from Polkadot.{js}')}
+        title={t<string>('Import from AIGENT')}
       >
         <div className={CN('container')}>
           <div className='description'>
-            {t('Drag and drop the JSON file you exported from Polkadot.{js}')}
+            {t('Drag and drop the JSON file you exported from AIGENT')}
           </div>
           <Form
             className='form-container'
@@ -301,7 +302,7 @@ const Component: React.FC<Props> = ({ className }: Props) => {
                 accept={'application/json'}
                 className='file-selector'
                 disabled={validating}
-                hint={t('Drag and drop the JSON file you exported from Polkadot.{js}')}
+                hint={t('Drag and drop the JSON file you exported from AIGENT')}
                 onChange={onChange}
                 statusHelp={fileValidateState.message}
                 title={t('Import by JSON file')}
@@ -343,7 +344,7 @@ const Component: React.FC<Props> = ({ className }: Props) => {
                   validateStatus={submitValidateState.status}
                 >
                   <div className='input-label'>
-                    {t('Please enter the password you have used when creating your Polkadot.{js} account')}
+                    {t('Please enter the password you have used when creating your AIGENT account')}
                   </div>
                   <Input
                     id={`${formName}_${passwordField}`}

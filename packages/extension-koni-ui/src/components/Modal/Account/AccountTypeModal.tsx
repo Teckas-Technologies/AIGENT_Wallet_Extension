@@ -67,7 +67,7 @@ const Component: React.FC<Props> = (props: Props) => {
         icon: <CloseIcon />,
         onClick: onCancel
       }}
-      title={t<string>('Select account type')}
+      title={t<string>('Import your account')}
     >
       <div className='items-container'>
         <SelectAccountType
