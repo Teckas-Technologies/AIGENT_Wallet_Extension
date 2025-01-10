@@ -56,6 +56,7 @@ function Component ({ className = '', data, onCancel }: Props): React.ReactEleme
     }
 
     const link = (data.extrinsicHash && data.extrinsicHash !== '') && getExplorerLink(originChainInfo, data.extrinsicHash, 'tx');
+    console.log('Explorer Link:', link);
 
     return (
       <Button

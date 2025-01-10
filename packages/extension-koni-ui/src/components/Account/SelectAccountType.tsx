@@ -67,11 +67,11 @@ const Component: React.FC<SelectAccountTypeProps> = (props: SelectAccountTypePro
 
   return (
     <div className={className}>
-      {/* {withLabel && (
+      {withLabel && (
         <div className='label'>
           {t(label || defaultLabel)}
         </div>
-      )} */}
+      )}
       {/* <div className='items-container'>
         {items.map((item) => {
           const _selected = selectedItems.find((i) => i === item.key);

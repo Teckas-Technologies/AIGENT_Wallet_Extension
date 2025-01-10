@@ -40,7 +40,6 @@ interface NodeIconProps extends AbstractIcon {
   type: 'node',
   value: React.ReactNode
 }
-
 type IconProps = SwIconProps | NodeIconProps;
 
 function Component (props: _AccountCardProps): React.ReactElement<_AccountCardProps> {
@@ -58,6 +57,10 @@ function Component (props: _AccountCardProps): React.ReactElement<_AccountCardPr
 
   const signMode = useGetAccountSignModeByAddress(address);
   const isMantaPayEnabled = useIsMantaPayEnabled(address);
+  if (accountName?.includes("EVM")) {
+    return null; // Do not render this component
+  }
+    console.log('Account Props:', { accountName, address });
 
   const iconProps: IconProps | undefined = useMemo((): IconProps | undefined => {
     switch (signMode) {

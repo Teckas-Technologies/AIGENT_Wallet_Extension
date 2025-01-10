@@ -45,13 +45,13 @@ export function getExplorerLink (chainInfo: _ChainInfo, value: string, type: 'ac
   if (explorerLink && type === 'account') {
     const route = getBlockExplorerAccountRoute(explorerLink);
 
-    return `${explorerLink}${explorerLink.endsWith('/') ? '' : '/'}${route}/${value}`;
+    return `${explorerLink}${explorerLink.endsWith('/') ? '' : '/'}query/${value}`;
   }
 
   if (explorerLink && value.startsWith('0x')) {
     const route = getBlockExplorerTxRoute(chainInfo);
 
-    return (`${explorerLink}${explorerLink.endsWith('/') ? '' : '/'}${route}/${value}`);
+    return (`${explorerLink}${explorerLink.endsWith('/') ? '' : '/'}query/${value}`);
   }
 
   return undefined;

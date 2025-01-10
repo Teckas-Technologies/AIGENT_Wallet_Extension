@@ -30,7 +30,7 @@ function Component ({ className }: Props): React.ReactElement<Props> {
 
   const items = useMemo((): WelcomeButtonItem[] => [
     {
-      description: t('Create a new account with SubWallet'),
+      description: t('Create a new account with AIGENT Wallet'),
       icon: PlusCircle,
       id: CREATE_ACCOUNT_MODAL,
       schema: 'primary',
